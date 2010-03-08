@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<project default="build" basedir=".">
+  <!-- build parameters -->
+  <property name="bin"    value="bin"/>
+  <property name="src"    value="src"/>
+  <property name="lib"    value="lib"/>
+  <property name="apps"   value="apps"/>
+  <property name="proj"   value="cpsc415"/>
+  <property name="tomcat" value="/Users/dmerrick/cpsc415/lab/tomcat/webapps"/>
+
+  <!-- initialize classpath -->
+  <path id="classpath">
+    <fileset dir="${lib}">
+      <include name="**/*.jar"/>
+    </fileset>
+    <pathelement path="${bin}"/>
+  </path>
+
+  <target name="build" depends="package" description="Builds Web Applications">
+  </target>
+
+  <target name="deploy" depends="package" description="Copies WARs to tomcat directory">
+    <copy todir="${tomcat}/">
+      <fileset dir="${apps}">
+        <include name="*.war"/>
+      </fileset>
+    </copy>
+  </target>
+
+  <target name="init">
+    <mkdir dir="${bin}"/>
+    <mkdir dir="${apps}"/>
+  </target>
+
+  <target name="clean" description="Cleans the build directory">
+    <delete dir="${bin}"/>
+    <delete dir="${apps}"/>
+    <delete dir="${tomcat}/${proj}"/>
+    <delete file="${tomcat}/${proj}.war"/>
+  </target>
+
+  <target name="compile" depends="init">
+    <javac srcdir="${src}"
+           destdir="${bin}"
+           classpathref="classpath">
+      <src path="${src}"/>
+    </javac>
+  </target>
+
+  <target name="package" depends="compile">
+    <war destfile="${apps}/${proj}.war" webxml="${src}/web.xml">
+      <fileset dir="${src}/html"/>
+      <classes dir="${bin}"/>
+    </war>
+  </target>
+</project>

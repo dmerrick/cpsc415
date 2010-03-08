@@ -1,0 +1,43 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html> 
+<head>
+<title>Link Aggregator Alpha</title>
+<link rel="stylesheet" type="text/css" href="css/style.css"/>
+</head>
+
+<body>
+<h1>"Bank Accounts"</h1>
+<h3>Create Account</h3>
+<form name="create" action="/CreateAccount" method="POST">
+  <table>
+    <tr>
+      <td>Name: </td>
+      <td>
+        <input type="text" name="AcctName"/>
+      </td>      
+    </tr>
+    <tr>
+      <td></td>
+      <td><input type="submit" value="Create Account"/></td>
+    </tr>
+  </table>
+</form>
+
+<h3>Delete Account</h3>
+<form name="delete" action="/DeleteAccount" method="POST">
+  <table>
+    <tr>
+      <td>Name: </td>
+      <td>
+        <input type="text" name="AcctName"/>
+      </td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><input type="submit" value="Delete Account"/></td>
+    </tr>
+  </table>
+</form>
+<hr>
+</body> 
+</html>
