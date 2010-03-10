@@ -7,7 +7,7 @@
   <property name="lib"    value="lib"/>
   <property name="apps"   value="apps"/>
   <property name="proj"   value="cpsc415"/>
-  <property name="tomcat" value="/Users/dmerrick/cpsc415/lab/tomcat/webapps"/>
+  <property name="tomcat" value="/home3/dmerrick/lab/tomcat/webapps"/>
 
   <!-- initialize classpath -->
   <path id="classpath">
