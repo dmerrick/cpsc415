@@ -3,7 +3,7 @@
  "http://java.sun.com/dtd/web-app_2_3.dtd" >
 
 <web-app>
-  <display-name>Link Aggregator Alpha</display-name>
+  <display-name>Servlet Experiments 04</display-name>
 
   <servlet>
   	<servlet-name>CreateAccount</servlet-name>
@@ -14,6 +14,41 @@
   	<servlet-name>DeleteAccount</servlet-name>
   	<servlet-class>cpsc415.DeleteAccount</servlet-class>
   </servlet>
+  
+  <servlet>
+  	<servlet-name>ListAccounts</servlet-name>
+  	<servlet-class>cpsc415.ListAccounts</servlet-class>
+  </servlet>  
+
+  <servlet>
+  	<servlet-name>Deposit</servlet-name>
+  	<servlet-class>cpsc415.Deposit</servlet-class>
+  </servlet>  
+
+  <servlet-mapping>
+  	<servlet-name>Deposit</servlet-name>
+  	<url-pattern>/Deposit</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+  	<servlet-name>Transfer</servlet-name>
+  	<servlet-class>cpsc415.Transfer</servlet-class>
+  </servlet>  
+
+  <servlet-mapping>
+  	<servlet-name>Transfer</servlet-name>
+  	<url-pattern>/Transfer</url-pattern>
+  </servlet-mapping>  
+
+  <servlet>
+  	<servlet-name>Withdraw</servlet-name>
+  	<servlet-class>cpsc415.Withdraw</servlet-class>
+  </servlet>  
+
+  <servlet-mapping>
+  	<servlet-name>Withdraw</servlet-name>
+  	<url-pattern>/Withdraw</url-pattern>
+  </servlet-mapping>
 
   <servlet-mapping>
   	<servlet-name>CreateAccount</servlet-name>
@@ -23,6 +58,11 @@
   <servlet-mapping>
   	<servlet-name>DeleteAccount</servlet-name>
   	<url-pattern>/DeleteAccount</url-pattern>
+  </servlet-mapping>
+
+  <servlet-mapping>
+  	<servlet-name>ListAccounts</servlet-name>
+  	<url-pattern>/ListAccounts</url-pattern>
   </servlet-mapping>
 
 </web-app>

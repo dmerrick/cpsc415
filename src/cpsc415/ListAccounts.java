@@ -9,32 +9,26 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-public class CreateAccount extends HttpServlet {
+public class ListAccounts extends HttpServlet {
 
-	public CreateAccount() {
-		// No initialization required here.
-	}
+	public ListAccounts() { }
 
-	protected void doPost(HttpServletRequest req, HttpServletResponse resp)
+	@Override
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
-		// Retrieve account name from client form: exp03/exp03.html/create
-		String  name = req.getParameter("AcctName");
-		Account acct = new Account(name);
-		
-		// Add account to BankAccounts object
-		BANK.addAccount(acct);
-		
-		// Build response
+		resp.setContentType("text/html");
 		StringBuilder b = new StringBuilder();
 		b.append("<html>")
 		 .append("<head><title>Account Created</title></head>")
 		 .append("<body>")
-		 .append("<p>")
-		 .append(acct)
-		 .append("</p>")
-		 .append("<p>")
+		 .append("<ul>");
+		for (Account a : BANK.getAccounts()) {
+			b.append("<li>")
+			 .append(a)
+			 .append("</li>");
+		}
+		b.append("</ul>")
 		 .append(Experiment.linkToHome("Return to Accounts"))
-		 .append("</p>")
 		 .append("</body>")
 		 .append("</html>");
 		resp.getOutputStream().println(b.toString());

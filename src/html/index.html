@@ -1,14 +1,14 @@
 <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
 <html> 
 <head>
-<title>Link Aggregator Alpha</title>
+<title>Experiment 04</title>
 <link rel="stylesheet" type="text/css" href="css/style.css"/>
 </head>
 
 <body>
-<h1>"Bank Accounts"</h1>
+<h1>Bank Accounts</h1>
 <h3>Create Account</h3>
-<form name="create" action="/CreateAccount" method="POST">
+<form name="create" action="/cpsc415/CreateAccount" method="POST">
   <table>
     <tr>
       <td>Name: </td>
@@ -24,7 +24,7 @@
 </form>
 
 <h3>Delete Account</h3>
-<form name="delete" action="/DeleteAccount" method="POST">
+<form name="delete" action="/cpsc415/DeleteAccount" method="POST">
   <table>
     <tr>
       <td>Name: </td>
@@ -38,6 +38,80 @@
     </tr>
   </table>
 </form>
+
+<h3>Make Deposit</h3>
+<form name="deposit" action="/cpsc415/Deposit" method="POST">
+  <table>
+    <tr>
+      <td>Name: </td>
+      <td>
+        <input type="text" name="AcctName"/>
+      </td>
+    </tr>
+    <tr>
+      <td>Amount: </td>
+      <td>
+        <input type="text" name="Amount"/>
+      </td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><input type="submit" value="Deposit"/></td>
+    </tr>
+  </table>
+</form>
+
+<h3>Make Withdrawal</h3>
+<form name="withdraw" action="/cpsc415/Withdraw" method="POST">
+  <table>
+    <tr>
+      <td>Name: </td>
+      <td>
+        <input type="text" name="AcctName"/>
+      </td>
+    </tr>
+    <tr>
+      <td>Amount: </td>
+      <td>
+        <input type="text" name="Amount"/>
+      </td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><input type="submit" value="Withdraw"/></td>
+    </tr>
+  </table>
+</form>
+
+<h3>Make Transfer</h3>
+<form name="withdraw" action="/cpsc415/Transfer" method="POST">
+  <table>
+    <tr>
+      <td>From Name: </td>
+      <td>
+        <input type="text" name="AcctNameFrom"/>
+      </td>
+    </tr>
+    <tr>
+      <td>To Name: </td>
+      <td>
+        <input type="text" name="AcctNameTo"/>
+      </td>
+    </tr>    
+    <tr>
+      <td>Amount: </td>
+      <td>
+        <input type="text" name="Amount"/>
+      </td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><input type="submit" value="Transfer"/></td>
+    </tr>
+  </table>
+</form>
+
+<h3><a href="/cpsc415/ListAccounts">List Accounts</a></h3>
 <hr>
 </body> 
 </html>

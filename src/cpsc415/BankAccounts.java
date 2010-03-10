@@ -1,4 +1,4 @@
-package cpsc415.exp03;
+package cpsc415;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -65,8 +65,16 @@ public enum BankAccounts {
 	 */
 	public void deleteAccountByName(String name) {
 		for (int i = 0; i < accounts.size(); i++) {
-			if (accounts.get(i).equals(name))
+			if (accounts.get(i).getName().equals(name))
 				accounts.remove(i);
 		}
+	}
+	
+	/**
+	 * Returns a list of the accounts.
+	 * @return accounts list
+	 */
+	public List<Account> getAccounts() {
+		return accounts;
 	}
 }

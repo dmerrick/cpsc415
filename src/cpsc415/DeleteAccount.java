@@ -1,6 +1,6 @@
-package cpsc415.exp03;
+package cpsc415;
 
-import static cpsc415.exp03.BankAccounts.BANK;
+import static cpsc415.BankAccounts.BANK;
 
 import java.io.IOException;
 
@@ -18,7 +18,7 @@ public class DeleteAccount extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
-		// Retrieve account name from client form: exp03/exp03.html/delete
+		// Retrieve account name from client form
 		String  name = req.getParameter("AcctName");
 		
 		// Get the account
@@ -36,7 +36,7 @@ public class DeleteAccount extends HttpServlet {
 		 .append(acct)
 		 .append("</p>")
 		 .append("<p>")
-		 .append("<a href=\"/exp03/exp03.html\">Return to Accounts</a>")
+		 .append(Experiment.linkToHome("Return to Accounts"))
 		 .append("</p>")
 		 .append("</body>")
 		 .append("</html>");

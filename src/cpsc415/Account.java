@@ -1,4 +1,4 @@
-package cpsc415.exp03;
+package cpsc415;
 
 /**
  * Represents a bank account.
@@ -55,8 +55,25 @@ public class Account {
 		return amount;
 	}
 	
+	public void withdraw(String amount) {
+		withdraw(Integer.parseInt(amount));
+	}
+	
+	public void withdraw(Integer amount) {
+		this.amount -= amount;
+	}
+	
+	public void deposit(String amount) {
+		deposit(Integer.parseInt(amount));
+	}
+	
+	public void deposit(Integer amount) {
+		this.amount += amount;
+	}
+	
 	public String toString() {
-		return "Account #: " + num + "; Holder's Name: " + name;
+		return "Account #: " + num + "; Holder's Name: " + name +
+			   "; Amount: " + amount;
 	}
 	
 }

@@ -9,26 +9,29 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-public class CreateAccount extends HttpServlet {
+public class Deposit extends HttpServlet {
 
-	public CreateAccount() {
-		// No initialization required here.
+	public Deposit() {
 	}
 
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
-		// Retrieve account name from client form: exp03/exp03.html/create
-		String  name = req.getParameter("AcctName");
-		Account acct = new Account(name);
-		
-		// Add account to BankAccounts object
-		BANK.addAccount(acct);
-		
-		// Build response
+		resp.setContentType("text/html");
+		String name   = req.getParameter("AcctName");
+		String amount = req.getParameter("Amount");
+		// Make deposit
+		Account acct = BANK.getAccountByName(name);
+		acct.deposit(amount);
+
 		StringBuilder b = new StringBuilder();
 		b.append("<html>")
-		 .append("<head><title>Account Created</title></head>")
+		 .append("<head><title>Deposit</title></head>")
 		 .append("<body>")
+		 .append("<h3>Deposit of ")
+		 .append(acct.getAmount())
+		 .append(" into account #")
+		 .append(acct.getNum())
+		 .append(" was successful</h3>")
 		 .append("<p>")
 		 .append(acct)
 		 .append("</p>")
@@ -37,7 +40,7 @@ public class CreateAccount extends HttpServlet {
 		 .append("</p>")
 		 .append("</body>")
 		 .append("</html>");
-		resp.getOutputStream().println(b.toString());
+		resp.getOutputStream().println(b.toString());		
 	}
 
 }
