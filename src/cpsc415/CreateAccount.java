@@ -17,15 +17,45 @@ public class CreateAccount extends HttpServlet {
 
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
-		// Retrieve account name from client form: exp03/exp03.html/create
-		String  name = req.getParameter("AcctName");
+
+		// retrieve account name from client form
+		String name = req.getParameter("AcctName");
+
+    // check to see if account with that name already exists
+    if (BANK.getAccountByName(name) != null) {
+
+		  // build response
+		  StringBuilder b = new StringBuilder();
+
+		  b.append("<html>")
+		   .append("<head><title>Account already exists!</title></head>")
+		   .append("<body>")
+		   .append("<h1>Account already exists</h1>")
+		   .append("<p>")
+		   .append("The account with name \'")
+		   .append(name)
+		   .append("\' already exists.")
+		   .append("</p>")
+		   .append("<p>")
+		   .append(Experiment.linkToHome("Return to Accounts"))
+		   .append("</p>")
+		   .append("</body>")
+		   .append("</html>");
+
+		  resp.getOutputStream().println(b.toString());
+
+      return;
+    }
+
+    // create a new account with that name
 		Account acct = new Account(name);
 		
-		// Add account to BankAccounts object
+		// add account to BANK object
 		BANK.addAccount(acct);
 		
-		// Build response
+		// build response
 		StringBuilder b = new StringBuilder();
+
 		b.append("<html>")
 		 .append("<head><title>Account Created</title></head>")
 		 .append("<body>")
@@ -37,7 +67,10 @@ public class CreateAccount extends HttpServlet {
 		 .append("</p>")
 		 .append("</body>")
 		 .append("</html>");
+
 		resp.getOutputStream().println(b.toString());
+
+    return;
 	}
 
 }
