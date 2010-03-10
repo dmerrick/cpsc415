@@ -18,17 +18,21 @@ public class DeleteAccount extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
-		// Retrieve account name from client form
+
+		// retrieve account name from client form
 		String  name = req.getParameter("AcctName");
 		
 		// Get the account
 		Account acct = BANK.getAccountByName(name);
 		
-		// Delete the account
+    if( acct != null) {
+
+		// delete the account
 		BANK.deleteAccountByName(name);
 		
-		// Build response
+		// build response
 		StringBuilder b = new StringBuilder();
+
 		b.append("<html>")
 		 .append("<head><title>Account Deleted</title></head>")
 		 .append("<body>")
@@ -40,7 +44,35 @@ public class DeleteAccount extends HttpServlet {
 		 .append("</p>")
 		 .append("</body>")
 		 .append("</html>");
+
 		resp.getOutputStream().println(b.toString());
+
+    return;
+
+    } else { // account doesnt exist
+
+		  // build response
+		  StringBuilder b = new StringBuilder();
+
+      b.append("<html>")
+		   .append("<head><title>Account does not exist!</title></head>")
+		   .append("<body>")
+		   .append("<h1>Account does not exist</h1>")
+		   .append("<p>")
+		   .append("The account with name \'")
+		   .append(name)
+		   .append("\' does not exist.")
+		   .append("</p>")
+		   .append("<p>")
+		   .append(Experiment.linkToHome("Return to Accounts"))
+		   .append("</p>")
+		   .append("</body>")
+		   .append("</html>");
+
+		  resp.getOutputStream().println(b.toString());
+
+      return;
+    }
 	}
 	
 }
