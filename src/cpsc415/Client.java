@@ -53,9 +53,33 @@ public class Client {
     return num;
   }
 
+  public void setAddress(String address) {
+    this.address = address;
+  }
+	
+  public void setTelephone(String telephone) {
+    this.telephone = telephone;
+  }
+	
+  public void setEmail(String email) {
+    this.email = email;
+  }
+	
+
 	public String toString() {
-		return "Client #: " + num + "; Name: " + name + "; Address: " + address +
-      "; Email: " + email + "; Telephone #: " + telephone;
+    StringBuilder ret = new StringBuilder();
+
+    ret.append(name);
+
+    // FIXME: these aren't working ATM
+    if(address != null)
+      ret.append("<br>Address: " + address);
+    if(telephone != null)
+      ret.append("<br>Telephone Number: " + telephone);
+    if(email != null)
+      ret.append("<br>Email: " + email);
+
+		return ret.toString();
 	}
 	
 }

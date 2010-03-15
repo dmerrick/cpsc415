@@ -41,7 +41,7 @@ public class Account {
 	}
 
 	public String getName() {
-		return client.getName();
+		return client.toString();
 	}
 
 	public String getNum() {
@@ -51,6 +51,18 @@ public class Account {
 	public int getAmount() {
 		return amount;
 	}
+
+  public void setAddress(String address) {
+    client.setAddress(address);
+  }
+	
+  public void setTelephone(String telephone) {
+    client.setTelephone(telephone);
+  }
+	
+  public void setEmail(String email) {
+    client.setEmail(email);
+  }
 	
 	public void withdraw(String amount) {
 		withdraw(Integer.parseInt(amount));
@@ -69,8 +81,16 @@ public class Account {
 	}
 	
 	public String toString() {
-		return "Account #: " + num + "; Holder's Name: " + this.getName() +
-			   "; Amount: " + amount;
+    StringBuilder ret = new StringBuilder();
+
+    ret.append("Account Number: ")
+       .append(num)
+       .append("<br />Name: ")
+       .append(this.getName())
+       .append("<br />Amount: ")
+       .append(amount);
+
+		return ret.toString();
 	}
 	
 }

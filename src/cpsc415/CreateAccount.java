@@ -18,8 +18,11 @@ public class CreateAccount extends HttpServlet {
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
 
-		// retrieve account name from client form
+		// retrieve account info from client form
 		String name = req.getParameter("AcctName");
+		String address = req.getParameter("Address");
+		String telephone = req.getParameter("Telephone");
+		String email = req.getParameter("Email");
 
     // check to see if account with that name already exists
     if (BANK.getAccountByName(name) != null) {
@@ -49,6 +52,21 @@ public class CreateAccount extends HttpServlet {
 
     // create a new account with that name
 		Account acct = new Account(name);
+
+    // set address if provided
+    if( address != null ) {
+      acct.setAddress(address);
+    }
+		
+    // set telephone if provided
+    if( telephone != null ) {
+      acct.setTelephone(telephone);
+    }
+		
+    // set email if provided
+    if( email != null ) {
+      acct.setEmail(email);
+    }
 		
 		// add account to BANK object
 		BANK.addAccount(acct);
