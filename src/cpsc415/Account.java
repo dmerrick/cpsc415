@@ -2,9 +2,6 @@ package cpsc415;
 
 /**
  * Represents a bank account.
- * 
- * @author richards
- *
  */
 public class Account {
 
@@ -14,9 +11,9 @@ public class Account {
 	private static int acctNum = 0;
 	
 	/**
-	 * Acount holders name.
+	 * Acount holder client object.
 	 */
-	private String name;
+	private Client client;
 	
 	/**
 	 * The account number.
@@ -26,7 +23,7 @@ public class Account {
 	/**
 	 * The amount in the account.
 	 */
-	private int    amount;
+	private int amount;
 	
 	/**
 	 * Creates a new account.
@@ -34,7 +31,7 @@ public class Account {
 	 * @param name account holders name
 	 */
 	public Account(String name) {
-		this.name   = name;
+		this.client = new Client(name);
 		this.num    = "ID" + acctNum++;
 		this.amount = 0;
 	}
@@ -44,7 +41,7 @@ public class Account {
 	}
 
 	public String getName() {
-		return name;
+		return client.getName();
 	}
 
 	public String getNum() {
@@ -72,7 +69,7 @@ public class Account {
 	}
 	
 	public String toString() {
-		return "Account #: " + num + "; Holder's Name: " + name +
+		return "Account #: " + num + "; Holder's Name: " + this.getName() +
 			   "; Amount: " + amount;
 	}
 	

@@ -40,7 +40,7 @@ public class Client {
 	 * 
 	 * @param name client's name
 	 */
-	public Account(String name) {
+	public Client(String name) {
 		this.name   = name;
 		this.num    = "ID" + clientNum++;
 	}
