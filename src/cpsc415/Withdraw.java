@@ -20,9 +20,14 @@ public class Withdraw extends HttpServlet {
 		resp.setContentType("text/html");
 		String name   = req.getParameter("AcctName");
 		String amount = req.getParameter("Amount");
-		// Make deposit
+
+		// make withdrawl
 		Account acct = BANK.getAccountByName(name);
 		acct.withdraw(amount);
+
+    // log transaction
+    Transaction t = new Transaction(acct.getClient(), "WITHDRAW:"+amount);
+		String log = acct.addTransaction(t);
 
 		StringBuilder b = new StringBuilder();
 		b.append("<html>")
@@ -35,6 +40,9 @@ public class Withdraw extends HttpServlet {
 		 .append(" was successful</h3>")
 		 .append("<p>")
 		 .append(acct)
+		 .append("</p>")
+		 .append("<p>Transaction details:<br />")
+		 .append(log)
 		 .append("</p>")
 		 .append("<p>")
 		 .append(Experiment.linkToHome("Return to Accounts"))

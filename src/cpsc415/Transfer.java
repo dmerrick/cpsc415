@@ -28,6 +28,13 @@ public class Transfer extends HttpServlet {
 		Account toAcct = BANK.getAccountByName(to);
 		toAcct.deposit(amount);
 
+
+     // log transactions
+    Transaction t = new Transaction(toAcct.getClient(), "TRANS-FROM-"+fromAcct.getName()+":"+amount);
+		String firstLog = toAcct.addTransaction(t);
+    Transaction s = new Transaction(fromAcct.getClient(), "TRANS-TO-"+toAcct.getName()+":"+amount);
+		String secondLog = fromAcct.addTransaction(s);
+
 		StringBuilder b = new StringBuilder();
 		b.append("<html>")
 		 .append("<head><title>Deposit</title></head>")
@@ -39,6 +46,11 @@ public class Transfer extends HttpServlet {
 		 .append(" to account holder ")
 		 .append(toAcct.getName())
 		 .append(" was successful</p>")
+		 .append("<p>Transaction details:<br />")
+		 .append(firstLog)
+		 .append("<br />")
+		 .append(secondLog)
+		 .append("</p>")
 		 .append("<p>")
 		 .append(Experiment.linkToHome("Return to Accounts"))
 		 .append("</p>")

@@ -53,6 +53,10 @@ public class CreateAccount extends HttpServlet {
     // create a new account with that name
 		Account acct = new Account(name);
 
+    // log this creation as a transaction
+    Transaction t = new Transaction(acct.getClient(), "CREATE:"+name);
+    String log = acct.addTransaction(t);
+
     // set address if provided
     if( address != null ) {
       acct.setAddress(address);
@@ -79,6 +83,9 @@ public class CreateAccount extends HttpServlet {
 		 .append("<body>")
 		 .append("<p>")
 		 .append(acct)
+		 .append("</p>")
+		 .append("<p>Transaction details:<br />")
+		 .append(log)
 		 .append("</p>")
 		 .append("<p>")
 		 .append(Experiment.linkToHome("Return to Accounts"))

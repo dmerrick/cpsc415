@@ -1,5 +1,8 @@
 package cpsc415;
 
+import java.util.List;
+import java.util.LinkedList;
+
 /**
  * Represents a bank account.
  */
@@ -26,6 +29,11 @@ public class Account {
 	private int amount;
 	
 	/**
+	 * The list of transactions.
+	 */
+	private List<Transaction> trans;
+	
+	/**
 	 * Creates a new account.
 	 * 
 	 * @param name account holders name
@@ -34,6 +42,9 @@ public class Account {
 		this.client = new Client(name);
 		this.num    = "ID" + acctNum++;
 		this.amount = 0;
+
+    // initialize the transaction list
+    trans = new LinkedList();
 	}
 
 	public static int getAcctNum() {
@@ -52,6 +63,10 @@ public class Account {
 		return amount;
 	}
 
+	public Client getClient() {
+		return client;
+	}
+
   public void setAddress(String address) {
     client.setAddress(address);
   }
@@ -67,7 +82,7 @@ public class Account {
 	public void withdraw(String amount) {
 		withdraw(Integer.parseInt(amount));
 	}
-	
+
 	public void withdraw(Integer amount) {
 		this.amount -= amount;
 	}
@@ -80,6 +95,12 @@ public class Account {
 		this.amount += amount;
 	}
 	
+  public String addTransaction( Transaction t ) {
+    trans.add(t);
+
+    return t.toString();
+  }
+
 	public String toString() {
     StringBuilder ret = new StringBuilder();
 

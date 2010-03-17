@@ -27,6 +27,10 @@ public class DeleteAccount extends HttpServlet {
 		
     if( acct != null) {
 
+    // this isnt really important cause we're deleting it anyway
+    //Transaction t = new Transaction(acct.getClient(), "DELETE:"+acct.getNum());
+    //String log = acct.addTransaction(t);
+
 		// delete the account
 		BANK.deleteAccountByName(name);
 		
