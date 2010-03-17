@@ -22,7 +22,7 @@ public class ListTransactions extends HttpServlet {
     String name = req.getParameter("AcctName");
 		String number = req.getParameter("AcctNum");
 
-
+    // choose the account by name or number
     if(name != null) {
 		  acct = BANK.getAccountByName(name);
     } else {

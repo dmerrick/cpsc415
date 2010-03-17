@@ -45,33 +45,55 @@ public class Client {
 		this.num    = "ID" + clientNum++;
 	}
 
+	/**
+	 * Returns the name of the client.
+	 */
 	public String getName() {
     return name;
   }
 
+	/**
+	 * Returns the number of the client.
+	 */
 	public String getNum() {
     return num;
   }
 
+	/**
+	 * Sets the address to a new value.
+   *
+   * @param address the address
+	 */
   public void setAddress(String address) {
     this.address = address;
   }
 	
+	/**
+	 * Sets the telephone number to a new value.
+   *
+   * @param telephone the number
+	 */
   public void setTelephone(String telephone) {
     this.telephone = telephone;
   }
 	
+	/**
+	 * Sets the email address to a new value.
+   *
+   * @param email the address
+	 */
   public void setEmail(String email) {
     this.email = email;
   }
 	
-
+  /**
+   * Returns a String version of the client.
+   */
 	public String toString() {
     StringBuilder ret = new StringBuilder();
 
     ret.append(name);
 
-    // FIXME: these aren't working ATM
     if(address != null)
       ret.append("<br>Address: " + address);
     if(telephone != null)

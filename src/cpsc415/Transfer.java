@@ -22,12 +22,11 @@ public class Transfer extends HttpServlet {
 		String to     = req.getParameter("AcctNameTo");
 		String amount = req.getParameter("Amount");
 
-		// Make Transfer
+		// make transfer
 		Account fromAcct = BANK.getAccountByName(from);
 		fromAcct.withdraw(amount);
 		Account toAcct = BANK.getAccountByName(to);
 		toAcct.deposit(amount);
-
 
      // log transactions
     Transaction t = new Transaction(toAcct.getClient(), "TRANS-FROM-"+fromAcct.getName()+"-TO-"+toAcct.getName()+":"+amount);

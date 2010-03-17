@@ -49,19 +49,31 @@ public class Transaction {
     this.date = date;
 	}
 
+  /**
+   * Returns the client object.
+   */
 	public Client getClient() {
     return client;
   }
 
+  /**
+   * Returns the description of the transaction.
+   */
 	public String getDescription() {
     return description;
   }
 
+  /**
+   * Returns the date as a String.
+   */
 	public String getDateString() {
     DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
     return dateFormat.format(this.date);
   }
 
+  /**
+   * Returns a String version of the transaction.
+   */
 	public String toString() {
     StringBuilder ret = new StringBuilder();
 
