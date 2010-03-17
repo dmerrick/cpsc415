@@ -19,7 +19,7 @@ public class ListAccounts extends HttpServlet {
 		resp.setContentType("text/html");
 		StringBuilder b = new StringBuilder();
 		b.append("<html>")
-		 .append("<head><title>Account Created</title></head>")
+		 .append("<head><title>Account List</title></head>")
 		 .append("<body>")
 		 .append("<ul>");
 		for (Account a : BANK.getAccounts()) {
