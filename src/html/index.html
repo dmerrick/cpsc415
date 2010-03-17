@@ -130,6 +130,32 @@
 </form>
 
 <h3><a href="/cpsc415/ListAccounts">List Accounts</a></h3>
+<h3>List Transactions</h3>
+<form name="transactions" action="/cpsc415/ListTransactions" method="POST">
+  <table>
+    <tr>
+      <td colspan="2">Enter either name or number</td>
+    </tr>
+    <tr>
+    <tr>
+      <td>Name: </td>
+      <td>
+        <input type="text" name="AcctName"/>
+      </td>      
+    </tr>
+    <tr>
+      <td>Number: </td>
+      <td>
+        <input type="text" name="AcctNumber"/>
+      </td>      
+    </tr>
+    <tr>
+      <td></td>
+      <td><input type="submit" value="List Transactions"/></td>
+    </tr>
+  </table>
+</form>
+
 <hr>
 </body> 
 </html>

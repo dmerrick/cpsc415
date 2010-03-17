@@ -44,7 +44,7 @@ public class Account {
 		this.amount = 0;
 
     // initialize the transaction list
-    trans = new LinkedList();
+    trans = new LinkedList<Transaction>();
 	}
 
 	public static int getAcctNum() {
@@ -52,7 +52,7 @@ public class Account {
 	}
 
 	public String getName() {
-		return client.toString();
+		return client.getName();
 	}
 
 	public String getNum() {
@@ -99,6 +99,10 @@ public class Account {
     trans.add(t);
 
     return t.toString();
+  }
+
+  public List<Transaction> getTransactions() {
+    return this.trans;
   }
 
 	public String toString() {

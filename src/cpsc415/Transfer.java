@@ -30,9 +30,9 @@ public class Transfer extends HttpServlet {
 
 
      // log transactions
-    Transaction t = new Transaction(toAcct.getClient(), "TRANS-FROM-"+fromAcct.getName()+":"+amount);
+    Transaction t = new Transaction(toAcct.getClient(), "TRANS-FROM-"+fromAcct.getName()+"-TO-"+toAcct.getName()+":"+amount);
 		String firstLog = toAcct.addTransaction(t);
-    Transaction s = new Transaction(fromAcct.getClient(), "TRANS-TO-"+toAcct.getName()+":"+amount);
+    Transaction s = new Transaction(fromAcct.getClient(), "TRANS-TO-"+toAcct.getName()+"-FROM-"+fromAcct.getName()+":"+amount);
 		String secondLog = fromAcct.addTransaction(s);
 
 		StringBuilder b = new StringBuilder();

@@ -65,4 +65,14 @@
   	<url-pattern>/ListAccounts</url-pattern>
   </servlet-mapping>
 
+  <servlet>
+  	<servlet-name>ListTransactions</servlet-name>
+  	<servlet-class>cpsc415.ListTransactions</servlet-class>
+  </servlet>  
+
+  <servlet-mapping>
+  	<servlet-name>ListTransactions</servlet-name>
+  	<url-pattern>/ListTransactions</url-pattern>
+  </servlet-mapping>
+
 </web-app>
